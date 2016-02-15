@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <string>
 #include "Recorder.hpp"
+#include "Player.hpp"
 #include "Audiolog.hpp"
 #include "LinkedList.hpp"
 
@@ -24,6 +25,7 @@ class LogHandler{
     void init();
     std::string folderPath;
     Recorder* rec = nullptr;
+    Player* player = nullptr;
     LinkedList<Audiolog> logList;
     
     
@@ -46,6 +48,9 @@ public:
     int recordLog(Audiolog* log);
     //recordLog() without parameters is interactive!!
     int recordLog();
+    int playLog(Audiolog* log);
+    //playLog without parameters is interactive!!
+    int playLog();
     int editLog(Audiolog* log);
     int deleteLog();
     int deleteLog(int index);

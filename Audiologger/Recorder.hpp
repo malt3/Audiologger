@@ -41,17 +41,17 @@
 
 class Recorder{
     /* specific init methods for portaudio and sndfile */
+    void init();
     void init_portaudio();
     void init_sndfile();
     
     /* Class specific data */
     bool recording = false; //helps to determine if the recorder is currently recording or not
-    char* destPath = NULL; //Path to the .wav file
-    char* title = NULL;
-    char* sampleBlock = NULL; //Buffer for mic input. Worker writes is to file when it is full
+    char* destPath = nullptr; //Path to the .wav file
+    char* sampleBlock = nullptr; //Buffer for mic input. Worker writes it to file when it is full
     
     /* portaudio related */
-    PaStream *stream = NULL; //Portaudio Stream Object used to get mic input
+    PaStream *stream = nullptr; //Portaudio Stream Object used to get mic input
     PaStreamParameters inputParameters; //Parameters used to open the stream
     
     /* sndfile related */
@@ -61,7 +61,7 @@ class Recorder{
     /* worker vars */ //Might go into own class later for clarity
     bool stopRecordingThread = false; //Tells the worker when to stop
     std::mutex stopRecordingThread_mutex; //mutex for variable above. Needed for threadsafety
-    std::thread* worker = NULL; //pointer to worker thread
+    std::thread* worker = nullptr; //pointer to worker thread
     
     
     
@@ -69,19 +69,16 @@ class Recorder{
 public:
     /* constructor and destructor */
     Recorder();
-    Recorder(char destPath[]);
+    Recorder(const char destPath[]);
     Recorder(std::string destPath);
     ~Recorder();
     
     /* functions to start and stop a recording. Also to get info if a recording is currently running */
     int startRecording();
-    int startRecording(std::string title);
     int stopRecording();
     bool isRecording();
     
     /* getter and setter for destPath */
     char* getDestPath();
-    void setDestPath(char destPath[]);
-    char* getTitle();
-    void setTitle(char title[]);
+    void setDestPath(const char destPath[]);
 };

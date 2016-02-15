@@ -52,6 +52,7 @@ void LogHandler::listAllLogNames(){
 
 void LogHandler::init(){
     rec = new Recorder();
+    player = new Player();
     readAudioLogsFromDisk();
 }
 
@@ -152,23 +153,46 @@ int LogHandler::recordLog(){
 }
 
 int LogHandler::recordLog(Audiolog* log){
-    char* completeFileName = create_c_string(log->getFilePath()+log->getFileName());
-    rec->setDestPath(completeFileName);
-    delete completeFileName;
-    char* title = create_c_string(log->getTitle());
-    rec->setTitle(title);
-    delete title;
+    std::string completeFileName = log->getFilePath()+log->getFileName();
+    rec->setDestPath(completeFileName.c_str());
     std::cout << "The recording of " << log->getTitle() << " starts when you press ENTER" <<std::endl;
     std::string userinput;
     getline(std::cin, userinput);
     
     rec->startRecording();
-    //sleep(1);
     std::cout << "Stop by pressing ENTER" << std::endl;
     getline(std::cin, userinput);
     rec->stopRecording();
     log->writeFileInfo();
     logList.push(log);
+    return 0;
+}
+
+int LogHandler::playLog(){
+    int indexOfLog = 0;
+    listAllLogNames();
+    std::cout << "What audiolog should be played?: ";
+    std::cin >>indexOfLog;
+    std::cout << std::endl;
+    indexOfLog--;
+    return playLog(logList.getVarAt(indexOfLog));
+}
+
+int LogHandler::playLog(Audiolog *log){
+    std::string completeFileName = log->getFilePath()+log->getFileName();
+    player->setDestPath(completeFileName.c_str());
+    
+    char userinput;
+    
+    player->startPlaying();
+    int secondsPlayed = 0;
+    while (!player->hasPlayerFinished()) {
+        sleep(1);
+        secondsPlayed++;
+        printf("Played %.2f percent\n", 100*secondsPlayed/log->getDuration());
+    }
+    player->stopPlaying();
+#warning find a way to SAFELY input sth to stop!
     return 0;
 }
 

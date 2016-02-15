@@ -16,54 +16,21 @@ Recorder::Recorder(){
     //Set standard output file to an empty string
     char empty = '\0';
     setDestPath(&empty);
-    
-    //Allocate memory for the sample buffer
-    sampleBlock = (char *)malloc(FRAMES_PER_BUFFER * NUM_CHANNELS * SAMPLE_SIZE);
-    if( sampleBlock == NULL ) //Test if memory could be allocated
-    {
-        printError("Could not allocate memory for the sample buffer.\n");
-        exit(1);
-    }
-    
-    //Do specific initialization for portaudio and sndfile
-    init_portaudio();
-    init_sndfile();
+
+    init();
 }
-Recorder::Recorder(char* destPath){
+Recorder::Recorder(const char* destPath){
     //set output file path
     setDestPath(destPath);
     
-    //Allocate memory for the sample buffer
-    sampleBlock = (char *)malloc(FRAMES_PER_BUFFER * NUM_CHANNELS * SAMPLE_SIZE);
-    if( sampleBlock == NULL ) //Test if memory could be allocated
-    {
-        printError("Could not allocate memory for the sample buffer.\n");
-        exit(1);
-    }
-    
-    //Do specific initialization for portaudio and sndfile
-    init_portaudio();
-    init_sndfile();
+    init();
 }
 
 Recorder::Recorder(std::string destPath){
     //set output file path
-    const char* temp = destPath.c_str();
-    char* out = new char[destPath.length()];
-    strcpy(out, temp);
-    setDestPath(out);
+    setDestPath(destPath.c_str());
     
-    //Allocate memory for the sample buffer
-    sampleBlock = (char *)malloc(FRAMES_PER_BUFFER * NUM_CHANNELS * SAMPLE_SIZE);
-    if( sampleBlock == NULL ) //Test if memory could be allocated
-    {
-        printError("Could not allocate memory for the sample buffer.\n");
-        exit(1);
-    }
-    
-    //Do specific initialization for portaudio and sndfile
-    init_portaudio();
-    init_sndfile();
+    init();
 }
 Recorder::~Recorder(){
     PaError err;
@@ -78,11 +45,23 @@ Recorder::~Recorder(){
     
     //Free memory
     if(destPath) delete [] destPath;
-    if(title) delete [] title;
     if(sampleBlock) delete sampleBlock;
     if (worker) delete worker;
 }
 
+void Recorder::init(){
+    //Allocate memory for the sample buffer
+    sampleBlock = (char *)malloc(FRAMES_PER_BUFFER * NUM_CHANNELS * SAMPLE_SIZE);
+    if( sampleBlock == NULL ) //Test if memory could be allocated
+    {
+        printError("Could not allocate memory for the sample buffer.\n");
+        exit(1);
+    }
+    
+    //Do specific initialization for portaudio and sndfile
+    init_portaudio();
+    init_sndfile();
+}
 
 void Recorder::init_portaudio(){
     PaError err = Pa_Initialize(); //Initialize portaudio
@@ -156,7 +135,6 @@ int Recorder::startRecording(){
     if (recording) {
         return -1;
     }
-    //std::cout << "* Starting recording!"<< std::endl;
     filePtr = sf_open(destPath, SFM_WRITE, &fileInfo); //Opens file with info from init_sndfile()
     printLog(*new std::string("* Opened File ") + destPath);
     PaError err;
@@ -205,7 +183,7 @@ bool Recorder::isRecording(){
 }
 
 
-void Recorder::setDestPath(char *destPath){
+void Recorder::setDestPath(const char *destPath){
     this->destPath = new char[strlen(destPath)];
     strcpy(this->destPath, destPath);
 }
@@ -214,14 +192,6 @@ char* Recorder::getDestPath(){
     char* ret = new char[strlen(destPath)];
     strcpy(ret, destPath);
     return ret;
-}
-
-char* Recorder::getTitle(){
-    return title;
-}
-void Recorder::setTitle(char title[]){
-    this->title = new char[strlen(title)];
-    strcpy(this->title, title);
 }
 
 

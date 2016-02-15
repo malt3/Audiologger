@@ -36,7 +36,7 @@ int main(int argc, char* argv[]){
         }else if(userInput == "l" || userInput == "L"){
             handler.listAllLogNames();
         }else if(userInput == "p" || userInput == "P"){
-#warning implement playback
+            handler.playLog();
         }else if(userInput == "e" || userInput == "E"){
 #warning implement edit
         }else if(userInput == "d" || userInput == "D"){
@@ -44,6 +44,7 @@ int main(int argc, char* argv[]){
         }else if(userInput == "q" || userInput == "Q" || userInput == "quit" || userInput == "Quit" || userInput == "exit" || userInput == "Exit"){
             cout << "Exiting normally" << endl;
         }
+        userInput = "";
     }
     return 0;
 }

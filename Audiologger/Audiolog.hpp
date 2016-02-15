@@ -10,9 +10,6 @@
 
 #include <string>
 #include "sndfile.hh"
-
-/*#include "/usr/local/Cellar/taglib/1.10/include/taglib/taglib.h"
-#include "/usr/local/Cellar/taglib/1.10/include/taglib/fileref.h"*/
 #include "taglib.h"
 #include "fileref.h"
 

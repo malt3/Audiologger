@@ -16,6 +16,7 @@
 		E99217A81C7163B90021FDEA /* libtag.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E99217A71C7163B90021FDEA /* libtag.dylib */; };
 		E9E40F091C71EA38004F669C /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9E40F071C71EA38004F669C /* LinkedList.cpp */; };
 		E9E40F0A1C7201A7004F669C /* LogHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E958EF881C71616D002F1A6B /* LogHandler.cpp */; };
+		E9E40F0D1C7207AE004F669C /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9E40F0B1C7207AE004F669C /* Player.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,8 @@
 		E99217A91C7164120021FDEA /* fileref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fileref.h; path = /usr/local/Cellar/taglib/1.10/include/taglib/fileref.h; sourceTree = "<absolute>"; };
 		E9E40F071C71EA38004F669C /* LinkedList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedList.cpp; sourceTree = "<group>"; };
 		E9E40F081C71EA38004F669C /* LinkedList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LinkedList.hpp; sourceTree = "<group>"; };
+		E9E40F0B1C7207AE004F669C /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		E9E40F0C1C7207AE004F669C /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +98,13 @@
 				E958EF871C71616D002F1A6B /* logging.hpp */,
 				E958EF881C71616D002F1A6B /* LogHandler.cpp */,
 				E958EF891C71616D002F1A6B /* LogHandler.hpp */,
-				E958EF8A1C71616D002F1A6B /* main.cpp */,
 				E958EF8B1C71616D002F1A6B /* Recorder.cpp */,
 				E958EF8C1C71616D002F1A6B /* Recorder.hpp */,
+				E9E40F0B1C7207AE004F669C /* Player.cpp */,
+				E9E40F0C1C7207AE004F669C /* Player.hpp */,
 				E9E40F071C71EA38004F669C /* LinkedList.cpp */,
 				E9E40F081C71EA38004F669C /* LinkedList.hpp */,
+				E958EF8A1C71616D002F1A6B /* main.cpp */,
 			);
 			path = Audiologger;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E958EF8D1C71616D002F1A6B /* Audiolog.cpp in Sources */,
+				E9E40F0D1C7207AE004F669C /* Player.cpp in Sources */,
 				E958EF8E1C71616D002F1A6B /* logging.cpp in Sources */,
 				E958EF901C71616D002F1A6B /* main.cpp in Sources */,
 				E958EF911C71616D002F1A6B /* Recorder.cpp in Sources */,
