@@ -10,6 +10,7 @@
 
 #include <mutex>
 #include <thread>
+#include <time.h>
 #include "portaudio.h"
 #include "sndfile.hh"
 
@@ -27,6 +28,9 @@ class Player{
     void init();
     
     /* Class specific data */
+    double duration = 0;
+    time_t playbackStartingTime = 0;
+    
     bool playing = false;
     char* destPath = nullptr;
     char* sampleBlock = nullptr; //Buffer for playback. Worker reads it from file
@@ -62,4 +66,10 @@ public:
     /* getter and setter for destPath */
     char* getDestPath();
     void setDestPath(const char destPath[]);
+    
+    double getDuration();
+    void setDuration(double dur);
+    
+    double getTimePlayed();
+    double getTimeLeft();
 };

@@ -109,7 +109,7 @@ void recordingThread(PaStream* stream, char* sampleBlock, SNDFILE* filePtr, bool
     PaError err;
     //uses mutex to be thread safe. stopRecordingThread could change at any time
     stopRecordingThread_mutex->lock();
-    printLog("* Worker started!");
+    //printLog("* Worker started!");
     fflush(stdout);
     bool stop = *stopRecordingThread;
     stopRecordingThread_mutex->unlock();
@@ -125,7 +125,7 @@ void recordingThread(PaStream* stream, char* sampleBlock, SNDFILE* filePtr, bool
         stop = *stopRecordingThread;
         stopRecordingThread_mutex->unlock();
     }
-    printLog("* Worker ending!");
+    //printLog("* Worker ending!");
     
 }
 
@@ -136,10 +136,10 @@ int Recorder::startRecording(){
         return -1;
     }
     filePtr = sf_open(destPath, SFM_WRITE, &fileInfo); //Opens file with info from init_sndfile()
-    printLog(*new std::string("* Opened File ") + destPath);
+    //printLog(*new std::string("* Opened File ") + destPath);
     PaError err;
     err = Pa_StartStream( stream ); //Start the input stream
-    printLog("* Stream started");
+    //printLog("* Stream started");
     if( err != paNoError ){
         printPaError(err);
         return -1;
@@ -156,7 +156,7 @@ int Recorder::stopRecording(){
     if (!recording) {
         return -1;
     }
-    printLog("* Stopping recording");
+    //printLog("* Stopping recording");
     
     stopRecordingThread_mutex.lock();
     stopRecordingThread = true;
@@ -172,7 +172,7 @@ int Recorder::stopRecording(){
     }
     
     sf_close(filePtr);
-    printLog("* Closed File!");
+    //printLog("* Closed File!");
     
     recording = false;
     return 0;

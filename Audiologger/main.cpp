@@ -30,13 +30,17 @@ int main(int argc, char* argv[]){
         cout << "What do you want to do? (type ? for help)" << endl;
         cin >> userInput;
         if(userInput == "?" || userInput == "h" || userInput == "H" || userInput == "help") {
-            cout << "Help: the commands are \n'n' for a new log\n'l' for a list of all logs\n'p' to play a log\n'e' to edit a log\n'd' to delete a log\n'q' to quit the program" << endl;
+            cout << "Help: the commands are \n'n' for a new log\n'l' for a list of all logs\n'p' to play a log\n's' to stop a running playback\n'e' to edit a log\n'd' to delete a log\n'q' to quit the program" << endl;
         }else if(userInput == "n" || userInput == "N"){
             handler.recordLog();
         }else if(userInput == "l" || userInput == "L"){
             handler.listAllLogNames();
         }else if(userInput == "p" || userInput == "P"){
             handler.playLog();
+        }else if(userInput == "s" || userInput == "S"){
+            handler.stopLog();
+        }else if(userInput == "i" || userInput == "I"){
+            handler.displayPlaybackInfo();
         }else if(userInput == "e" || userInput == "E"){
 #warning implement edit
         }else if(userInput == "d" || userInput == "D"){
@@ -44,7 +48,6 @@ int main(int argc, char* argv[]){
         }else if(userInput == "q" || userInput == "Q" || userInput == "quit" || userInput == "Quit" || userInput == "exit" || userInput == "Exit"){
             cout << "Exiting normally" << endl;
         }
-        userInput = "";
     }
     return 0;
 }

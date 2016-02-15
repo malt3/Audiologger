@@ -103,6 +103,14 @@ void LogHandler::readAudioLogsFromDisk(){
     }
 }
 
+void LogHandler::displayPlaybackInfo(){
+    if (!player->isPlaying()) {
+        std::cout << "Noting is being played right now. You can play a log by typing 'p'" << std::endl;
+    }else{
+        std::cout << "Now playing \""<<currentlyPlayed->getTitle()<<"\"\nPlayed "<<100*player->getTimePlayed()/player->getDuration()<<"%\n";
+    }
+}
+
 int LogHandler::deleteLog(){
     std::cout << "Wich log should be deleted?" << std::endl;
     listAllLogNames();
@@ -181,19 +189,29 @@ int LogHandler::playLog(){
 int LogHandler::playLog(Audiolog *log){
     std::string completeFileName = log->getFilePath()+log->getFileName();
     player->setDestPath(completeFileName.c_str());
+    currentlyPlayed = log;
     
     char userinput;
-    
+    player->setDuration(log->getDuration());
     player->startPlaying();
-    int secondsPlayed = 0;
+    /*int secondsPlayed = 0;
     while (!player->hasPlayerFinished()) {
         sleep(1);
         secondsPlayed++;
         printf("Played %.2f percent\n", 100*secondsPlayed/log->getDuration());
     }
-    player->stopPlaying();
+    player->stopPlaying();*/
 #warning find a way to SAFELY input sth to stop!
     return 0;
+}
+
+int LogHandler::stopLog(){
+    if(player->isPlaying()){
+        player->stopPlaying();
+        currentlyPlayed = nullptr;
+        return 0;
+    }
+    return -1;
 }
 
 Audiolog* LogHandler::getAudiologByIndex(int index){

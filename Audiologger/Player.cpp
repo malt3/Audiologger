@@ -118,7 +118,7 @@ void playbackThread(PaStream* stream, char* sampleBlock, SNDFILE* filePtr, bool*
     playbackThreadFinishedPlaying_mutex->lock();
     *playbackThreadFinishedPlaying = true;
     playbackThreadFinishedPlaying_mutex->unlock();
-    printLog("* Worker ending!");
+    //printLog("* Worker ending!");
 }
 
 bool Player::hasPlayerFinished(){
@@ -129,17 +129,16 @@ bool Player::hasPlayerFinished(){
     return ret;
 }
 
-/*Returns -1 if you try to start a recording twice.
- Returns 0 if everything went fine*/
 int Player::startPlaying(){
     if (playing) {
-        return -1;
+        stopPlaying();
     }
+    time(&playbackStartingTime);
     filePtr = sf_open(destPath, SFM_READ, &fileInfo); //Opens file with info from init_sndfile()
-    printLog(*new std::string("* Opened File ") + destPath);
+    //printLog(*new std::string("* Opened File ") + destPath);
     PaError err;
     err = Pa_StartStream( stream ); //Start the input stream
-    printLog("* Stream started");
+    //printLog("* Stream started");
     if( err != paNoError ){
         printPaError(err);
         return -1;
@@ -155,7 +154,7 @@ int Player::stopPlaying(){
     if (!playing) {
         return -1;
     }
-    printLog("* Stopping playback");
+    //printLog("* Stopping playback");
     
     stopPlaybackThread_mutex.lock();
     stopPlaybackThread = true;
@@ -173,7 +172,7 @@ int Player::stopPlaying(){
     
     sf_close(filePtr);
     fileInfo.format = 0;
-    printLog("* Closed File!");
+    //printLog("* Closed File!");
     
     playing = false;
     return 0;
@@ -192,4 +191,30 @@ char* Player::getDestPath(){
 void Player::setDestPath(const char destPath[]){
     this->destPath = new char[strlen(destPath)];
     strcpy(this->destPath, destPath);
+}
+
+double Player::getDuration(){
+    return duration;
+}
+
+void Player::setDuration(double dur){
+    duration = dur;
+}
+
+double Player::getTimePlayed(){
+    if (!playing) {
+        return 0;
+    }else{
+        time_t now;
+        time(&now);
+        return (now-playbackStartingTime);
+    }
+}
+
+double Player::getTimeLeft(){
+    if (!playing) {
+        return 0;
+    }else{
+        return duration-getTimePlayed();
+    }
 }

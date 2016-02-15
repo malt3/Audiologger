@@ -27,6 +27,7 @@ class LogHandler{
     Recorder* rec = nullptr;
     Player* player = nullptr;
     LinkedList<Audiolog> logList;
+    Audiolog* currentlyPlayed;
     
     
 public:
@@ -40,6 +41,8 @@ public:
     void listAllLogNames();
     void listAllFileNames();
     
+    void displayPlaybackInfo();
+    
     
     //calculates the number of audio logs that are in the specified folder
     int audioLogsOnDisk();
@@ -51,6 +54,7 @@ public:
     int playLog(Audiolog* log);
     //playLog without parameters is interactive!!
     int playLog();
+    int stopLog();
     int editLog(Audiolog* log);
     int deleteLog();
     int deleteLog(int index);
