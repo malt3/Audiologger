@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E958EF7E1C716132002F1A6B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E958EF7D1C716132002F1A6B /* main.cpp */; };
+		E958EF8D1C71616D002F1A6B /* Audiolog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E958EF841C71616D002F1A6B /* Audiolog.cpp */; };
+		E958EF8E1C71616D002F1A6B /* logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E958EF861C71616D002F1A6B /* logging.cpp */; };
+		E958EF901C71616D002F1A6B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E958EF8A1C71616D002F1A6B /* main.cpp */; };
+		E958EF911C71616D002F1A6B /* Recorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E958EF8B1C71616D002F1A6B /* Recorder.cpp */; };
+		E99217A01C7162CB0021FDEA /* libportaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E992179F1C7162CB0021FDEA /* libportaudio.a */; };
+		E99217A41C71632F0021FDEA /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E99217A31C71632F0021FDEA /* libsndfile.a */; };
+		E99217A81C7163B90021FDEA /* libtag.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E99217A71C7163B90021FDEA /* libtag.dylib */; };
+		E9E40F091C71EA38004F669C /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9E40F071C71EA38004F669C /* LinkedList.cpp */; };
+		E9E40F0A1C7201A7004F669C /* LogHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E958EF881C71616D002F1A6B /* LogHandler.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +32,25 @@
 
 /* Begin PBXFileReference section */
 		E958EF7A1C716132002F1A6B /* Audiologger */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Audiologger; sourceTree = BUILT_PRODUCTS_DIR; };
-		E958EF7D1C716132002F1A6B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E958EF841C71616D002F1A6B /* Audiolog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audiolog.cpp; sourceTree = "<group>"; };
+		E958EF851C71616D002F1A6B /* Audiolog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Audiolog.hpp; sourceTree = "<group>"; };
+		E958EF861C71616D002F1A6B /* logging.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = logging.cpp; sourceTree = "<group>"; };
+		E958EF871C71616D002F1A6B /* logging.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = logging.hpp; sourceTree = "<group>"; };
+		E958EF881C71616D002F1A6B /* LogHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogHandler.cpp; sourceTree = "<group>"; };
+		E958EF891C71616D002F1A6B /* LogHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LogHandler.hpp; sourceTree = "<group>"; };
+		E958EF8A1C71616D002F1A6B /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E958EF8B1C71616D002F1A6B /* Recorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Recorder.cpp; sourceTree = "<group>"; };
+		E958EF8C1C71616D002F1A6B /* Recorder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Recorder.hpp; sourceTree = "<group>"; };
+		E992179F1C7162CB0021FDEA /* libportaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libportaudio.a; path = /usr/local/Cellar/portaudio/19.20140130/lib/libportaudio.a; sourceTree = "<absolute>"; };
+		E99217A11C7162DF0021FDEA /* portaudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = portaudio.h; path = /usr/local/Cellar/portaudio/19.20140130/include/portaudio.h; sourceTree = "<absolute>"; };
+		E99217A21C7163180021FDEA /* sndfile.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = sndfile.hh; path = /usr/local/Cellar/libsndfile/1.0.26/include/sndfile.hh; sourceTree = "<absolute>"; };
+		E99217A31C71632F0021FDEA /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsndfile.a; path = /usr/local/Cellar/libsndfile/1.0.26/lib/libsndfile.a; sourceTree = "<absolute>"; };
+		E99217A51C7163990021FDEA /* taglib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = taglib.h; path = /usr/local/Cellar/taglib/1.10/include/taglib/taglib.h; sourceTree = "<absolute>"; };
+		E99217A61C7163A20021FDEA /* tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tag.h; path = /usr/local/Cellar/taglib/1.10/include/taglib/tag.h; sourceTree = "<absolute>"; };
+		E99217A71C7163B90021FDEA /* libtag.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtag.dylib; path = /usr/local/Cellar/taglib/1.10/lib/libtag.dylib; sourceTree = "<absolute>"; };
+		E99217A91C7164120021FDEA /* fileref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fileref.h; path = /usr/local/Cellar/taglib/1.10/include/taglib/fileref.h; sourceTree = "<absolute>"; };
+		E9E40F071C71EA38004F669C /* LinkedList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedList.cpp; sourceTree = "<group>"; };
+		E9E40F081C71EA38004F669C /* LinkedList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LinkedList.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99217A81C7163B90021FDEA /* libtag.dylib in Frameworks */,
+				E99217A01C7162CB0021FDEA /* libportaudio.a in Frameworks */,
+				E99217A41C71632F0021FDEA /* libsndfile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +70,9 @@
 		E958EF711C716132002F1A6B = {
 			isa = PBXGroup;
 			children = (
+				E99217AC1C71648C0021FDEA /* portaudio */,
+				E99217AB1C7164720021FDEA /* libsndfile */,
+				E99217AA1C71645D0021FDEA /* tagLib */,
 				E958EF7C1C716132002F1A6B /* Audiologger */,
 				E958EF7B1C716132002F1A6B /* Products */,
 			);
@@ -57,9 +89,48 @@
 		E958EF7C1C716132002F1A6B /* Audiologger */ = {
 			isa = PBXGroup;
 			children = (
-				E958EF7D1C716132002F1A6B /* main.cpp */,
+				E958EF841C71616D002F1A6B /* Audiolog.cpp */,
+				E958EF851C71616D002F1A6B /* Audiolog.hpp */,
+				E958EF861C71616D002F1A6B /* logging.cpp */,
+				E958EF871C71616D002F1A6B /* logging.hpp */,
+				E958EF881C71616D002F1A6B /* LogHandler.cpp */,
+				E958EF891C71616D002F1A6B /* LogHandler.hpp */,
+				E958EF8A1C71616D002F1A6B /* main.cpp */,
+				E958EF8B1C71616D002F1A6B /* Recorder.cpp */,
+				E958EF8C1C71616D002F1A6B /* Recorder.hpp */,
+				E9E40F071C71EA38004F669C /* LinkedList.cpp */,
+				E9E40F081C71EA38004F669C /* LinkedList.hpp */,
 			);
 			path = Audiologger;
+			sourceTree = "<group>";
+		};
+		E99217AA1C71645D0021FDEA /* tagLib */ = {
+			isa = PBXGroup;
+			children = (
+				E99217A51C7163990021FDEA /* taglib.h */,
+				E99217A91C7164120021FDEA /* fileref.h */,
+				E99217A61C7163A20021FDEA /* tag.h */,
+				E99217A71C7163B90021FDEA /* libtag.dylib */,
+			);
+			name = tagLib;
+			sourceTree = "<group>";
+		};
+		E99217AB1C7164720021FDEA /* libsndfile */ = {
+			isa = PBXGroup;
+			children = (
+				E99217A21C7163180021FDEA /* sndfile.hh */,
+				E99217A31C71632F0021FDEA /* libsndfile.a */,
+			);
+			name = libsndfile;
+			sourceTree = "<group>";
+		};
+		E99217AC1C71648C0021FDEA /* portaudio */ = {
+			isa = PBXGroup;
+			children = (
+				E99217A11C7162DF0021FDEA /* portaudio.h */,
+				E992179F1C7162CB0021FDEA /* libportaudio.a */,
+			);
+			name = portaudio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +189,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E958EF7E1C716132002F1A6B /* main.cpp in Sources */,
+				E958EF8D1C71616D002F1A6B /* Audiolog.cpp in Sources */,
+				E958EF8E1C71616D002F1A6B /* logging.cpp in Sources */,
+				E958EF901C71616D002F1A6B /* main.cpp in Sources */,
+				E958EF911C71616D002F1A6B /* Recorder.cpp in Sources */,
+				E9E40F091C71EA38004F669C /* LinkedList.cpp in Sources */,
+				E9E40F0A1C7201A7004F669C /* LogHandler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +283,12 @@
 		E958EF821C716132002F1A6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/libsndfile/1.0.26/lib,
+					/usr/local/Cellar/portaudio/19.20140130/lib,
+					/usr/local/Cellar/taglib/1.10/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -214,6 +296,12 @@
 		E958EF831C716132002F1A6B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/libsndfile/1.0.26/lib,
+					/usr/local/Cellar/portaudio/19.20140130/lib,
+					/usr/local/Cellar/taglib/1.10/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -237,6 +325,7 @@
 				E958EF831C716132002F1A6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
