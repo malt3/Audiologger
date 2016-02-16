@@ -32,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E9008B721C73D5E1002601D6 /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		E958EF7A1C716132002F1A6B /* Audiologger */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Audiologger; sourceTree = BUILT_PRODUCTS_DIR; };
 		E958EF841C71616D002F1A6B /* Audiolog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audiolog.cpp; sourceTree = "<group>"; };
 		E958EF851C71616D002F1A6B /* Audiolog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Audiolog.hpp; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 		E958EF711C716132002F1A6B = {
 			isa = PBXGroup;
 			children = (
+				E9008B721C73D5E1002601D6 /* todo.md */,
 				E99217AC1C71648C0021FDEA /* portaudio */,
 				E99217AB1C7164720021FDEA /* libsndfile */,
 				E99217AA1C71645D0021FDEA /* tagLib */,

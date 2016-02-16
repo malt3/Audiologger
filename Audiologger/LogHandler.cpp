@@ -21,6 +21,16 @@ char* create_c_string(std::string in){
     return out;
 }
 
+inline bool isInteger(const std::string & s)
+{
+    if(s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false ;
+    
+    char * p ;
+    strtol(s.c_str(), &p, 10) ;
+    
+    return (*p == 0) ;
+}
+
 
 std::string getFileExtension(const std::string& FileName)
 {
@@ -114,14 +124,23 @@ void LogHandler::displayPlaybackInfo(){
 int LogHandler::deleteLog(){
     std::cout << "Wich log should be deleted?" << std::endl;
     listAllLogNames();
-    std::cout << "Please enter the number of the log or type q to quit";
+    std::cout << "Please enter the number of the log or type q to quit" << std::endl;
     std::string str_index;
     std::cin >> str_index;
     if (str_index == "q" || str_index == "Q") {
         std::cout << "Will not delete anything!" << std::endl;
         return -1;
     }
+    if (!isInteger(str_index)) {
+        std::cout << "You did not enter a valid number." << std::endl;
+        return -1;
+    }
     int index = std::stoi(str_index)-1;
+    
+    if (index >= logList.getNumObjects() || index < 0) {
+        std::cout << "There is no log with this number" << std::endl;
+        return -1;
+    }
     
     if (!logList.getVarAt(index)->getFileExists()) {
         std::cout << "Audio file does not exist. Cannot be deleted." << std::endl;
@@ -177,12 +196,23 @@ int LogHandler::recordLog(Audiolog* log){
 }
 
 int LogHandler::playLog(){
+    std::string userinput;
     int indexOfLog = 0;
     listAllLogNames();
     std::cout << "What audiolog should be played?: ";
-    std::cin >>indexOfLog;
+    getchar();
+    getline(std::cin, userinput);
+    if(!isInteger(userinput)){
+        std::cout << "Please enter a number" <<std::endl;
+        return -1;
+    }
+    indexOfLog = stoi(userinput);
     std::cout << std::endl;
     indexOfLog--;
+    if (indexOfLog >= logList.getNumObjects() || indexOfLog < 0) {
+        std::cout << "Not a valid log number." <<std::endl;
+        return -1;
+    }
     return playLog(logList.getVarAt(indexOfLog));
 }
 
@@ -191,17 +221,9 @@ int LogHandler::playLog(Audiolog *log){
     player->setDestPath(completeFileName.c_str());
     currentlyPlayed = log;
     
-    char userinput;
+    //char userinput;
     player->setDuration(log->getDuration());
     player->startPlaying();
-    /*int secondsPlayed = 0;
-    while (!player->hasPlayerFinished()) {
-        sleep(1);
-        secondsPlayed++;
-        printf("Played %.2f percent\n", 100*secondsPlayed/log->getDuration());
-    }
-    player->stopPlaying();*/
-#warning find a way to SAFELY input sth to stop!
     return 0;
 }
 
