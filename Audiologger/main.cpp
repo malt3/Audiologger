@@ -27,10 +27,10 @@ int main(int argc, char* argv[]){
     LogHandler handler(filePath);
     string userInput = "";
     while (userInput != "q" && userInput != "Q" && userInput != "quit" && userInput != "Quit" && userInput != "exit" && userInput != "Exit") {
-        cout << "What do you want to do? (type ? for help)" << endl;
+        cout << "What do you want to do? (type '?' for help)" << endl;
         cin >> userInput;
         if(userInput == "?" || userInput == "h" || userInput == "H" || userInput == "help") {
-            cout << "Help: the commands are \n'n' for a new log\n'l' for a list of all logs\n'p' to play a log\n's' to stop a running playback\n'e' to edit a log\n'd' to delete a log\n'q' to quit the program" << endl;
+            cout << "Help: the commands are \n'?' for help\n'n' for a new log\n'l' for a list of all logs\n'p' to play a log\n'i' to get information on what is currently playing\n's' to stop a running playback\n'e' to edit a log\n'd' to delete a log\n'q' to quit the program" << endl;
         }else if(userInput == "n" || userInput == "N"){
             handler.recordLog();
         }else if(userInput == "l" || userInput == "L"){
