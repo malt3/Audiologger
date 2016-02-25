@@ -46,7 +46,7 @@
 * Scan for memory leaks
 * Port to windows/linux (linux might work out of the box)
 
-##"Marketing"
+##*"Marketing"*
 * Spread the word
 * Publish to GitHub
 * Get testers
