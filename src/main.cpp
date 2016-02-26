@@ -11,6 +11,7 @@
 #include "LogHandler.hpp"
 #include "Audiolog.hpp"
 #include "LinkedList.hpp"
+#include "AudiologgerConfig.hpp"
 #include <string>
 #include <stdio.h>
 #include <time.h>
@@ -19,6 +20,10 @@
 #define standardPath "~/audiologs/"
 
 using namespace std;
+
+void printVersion(){
+    printf("Audiologger Version %d.%d\n", Audiologger_VERSION_MAJOR, Audiologger_VERSION_MINOR);
+}
 
 string shellExtension(string inputPath){
     wordexp_t exp_result;
@@ -51,6 +56,7 @@ int main(int argc, char* argv[]){
             case '?':
             case 'h':
                 cout << "Help: the commands are \n'?' for help\n'n' for a new log\n'l' for a list of all logs\n'p' to play a log\n'i' to get information on what is currently playing\n's' to stop a running playback\n'e' to edit a log\n'd' to delete a log\n'q' to quit the program" << endl;
+                printVersion();
                 break;
             case 'n':
                 handler->recordLog();

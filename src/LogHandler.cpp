@@ -200,7 +200,7 @@ int LogHandler::playLog(){
     int indexOfLog = 0;
     listAllLogNames();
     std::cout << "What audiolog should be played?: ";
-    getchar();
+    //while (getchar()!='\n') {}
     getline(std::cin, userinput);
     if(!isInteger(userinput)){
         std::cout << "Please enter a number" <<std::endl;
