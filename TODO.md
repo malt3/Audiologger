@@ -44,11 +44,3 @@
 * Improve comments (describe behavior of classes and functions)
 * Scan for memory leaks
 * Port to windows/linux (linux might work out of the box)
-* Move to CMake
-
-##*"Marketing"*
-* Spread the word
-* Publish to GitHub
-* Get testers
-* Get commits
-* Add license
