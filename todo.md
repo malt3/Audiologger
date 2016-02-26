@@ -17,7 +17,6 @@
 ##File interaction
 * better buffering to have fewer reads and writes
 * file path sanity checks!! (eg don't overwrite existing logs. Check if a filepath makes sense)
-* correctly interpret file system vars like `~`
 * encryption 
     * probably AES
 
@@ -45,6 +44,7 @@
 * Improve comments (describe behavior of classes and functions)
 * Scan for memory leaks
 * Port to windows/linux (linux might work out of the box)
+* Move to CMake
 
 ##*"Marketing"*
 * Spread the word
