@@ -1,5 +1,7 @@
 #Audiologger
 
+[![Build Status](https://travis-ci.org/malt3/Audiologger.svg?branch=master)](https://travis-ci.org/malt3/Audiologger)
+
 Simple and elegant recording and playback program focused on a journal kind of voice recording.
 
 Has a small codebase and simple file structure. However, this program is still in early alpha and should only used experimentally.
