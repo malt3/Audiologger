@@ -25,7 +25,6 @@ before_install:
   - rm cmake.tar.bz2
   - export PATH=$(pwd)/cmake/bin:$PATH
   - sudo apt-get install -y  libtag1-dev libsndfile1-dev libportaudio-dev libstdc++6-4.7-dev
-  - mkdir build && cd build
 
 script:
   - cmake .
