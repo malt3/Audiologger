@@ -8,7 +8,11 @@ matrix:
       sudo: required
 
 before_install:
+  - sudo apt-get install software-properties-common
+  - sudo add-apt-repository ppa:george-edison55/cmake-3.x
   - sudo apt-get update
-  - sudo apt-get install -y  libtag1-dev libsndfile1-dev libportaudio-dev
+  - sudo apt-get install -y  libtag1-dev libsndfile1-dev libportaudio-dev cmake
 
-script: cmake .; make
+script:
+  - cmake .
+  - make
