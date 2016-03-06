@@ -18,9 +18,9 @@ matrix:
       sudo: required
       compiler: clang
 
-before_install: sudo chmod +x .travis-dependencies.sh
+before_install: chmod +x .travis-dependencies.sh
 
-install: sudo ./travis-dependencies.sh
+install: ./travis-dependencies.sh
   
 
 script:
