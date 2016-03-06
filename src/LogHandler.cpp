@@ -11,6 +11,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
+#include <cstring>
 #include <algorithm>
 
 char* create_c_string(std::string in){
