@@ -1,5 +1,5 @@
 language: cpp
-compoler: clang
+compiler: clang
 
 matrix:
   include:
@@ -9,6 +9,6 @@ matrix:
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install -y taglib libsndfile portaudio
+  - sudo apt-get install -y  libtag1-dev taglib libsndfile libsndfile1-dev libportaudio-dev portaudio
 
 script: cmake .; make
