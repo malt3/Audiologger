@@ -13,7 +13,15 @@ matrix:
             - clang-3.6
     - os: osx
       osx_image: xcode7.3
-      sudo: required
+      compiler: clang
+    - os: osx
+      osx_image: xcode7.1
+      compiler: clang
+    - os: osx
+      osx_image: xcode7
+      compiler: clang
+    - os: osx
+      osx_image: xcode6.4
       compiler: clang
 
 install: ./.travis-dependencies.sh
