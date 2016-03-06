@@ -10,8 +10,8 @@ matrix:
       addons:
         apt:
           packages:
-            - clang-3.7
-      env: COMPILER=clang++-3.7
+            - clang-3.6
+      env: COMPILER=clang++-3.6
 
 before_install:
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
