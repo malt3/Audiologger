@@ -18,6 +18,8 @@ matrix:
       sudo: required
       compiler: clang
 
+before_install: ls
+
 install: .travis-dependencies.sh
   
 
