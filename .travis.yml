@@ -11,13 +11,12 @@ matrix:
         apt:
           packages:
             - clang-3.6
-      env: COMPILER=clang++-3.6
     - os: osx
       osx_image: xcode7.3
       sudo: required
       compiler: clang
 
-install: sh .travis-dependencies.sh
+install: ./.travis-dependencies.sh
   
 
 script:
