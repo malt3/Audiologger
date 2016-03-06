@@ -17,6 +17,7 @@
 ##File interaction
 * better buffering to have fewer reads and writes
 * file path sanity checks!! (eg don't overwrite existing logs. Check if a filepath makes sense)
+* create audiolog folder if needed
 * encryption 
     * probably AES
 
