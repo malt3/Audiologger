@@ -10,8 +10,7 @@
 #include "dirent.h"
 #include <iostream>
 #include <stdio.h>
-#include <string>
-#include <cstring>
+#include <string.h>
 #include <algorithm>
 
 char* create_c_string(std::string in){
