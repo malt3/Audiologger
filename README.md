@@ -38,16 +38,16 @@ Audiologger was successfully build on:
 ### Mac OS X
 Audiologger uses clang for compilation. On osx, the easiest way to get clang is via XCode. This can be installed from the [App Store](https://itunes.apple.com/en/app/xcode/id497799835) or betas from their [developer portal](https://developer.apple.com/xcode/download/). Just entering `xcode-select --install` will also allow you to install clang.
 
-The dependencies can be installed via [homebrew](http://brew.sh/):
-`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` 
-`brew update` 
+The dependencies can be installed via [homebrew](http://brew.sh/):  
+`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`  
+`brew update`  
 `brew install portaudio taglib libsndfile cmake git`
 
-Then you can clone the git repo:
+Then you can clone the git repo:  
 `git clone https://github.com/malt3/Audiologger.git && cd Audiologger`
 
-Now you can build the project by entering 
-`cmake .` 
-`make`
+Now you can build the project by entering  
+`cmake .`  
+`make`  
 
-The executable can be found at `bin/Audiologger
+The executable can be found at `bin/Audiologger`
