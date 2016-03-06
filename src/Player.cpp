@@ -8,6 +8,7 @@
 
 #include "Player.hpp"
 #include "logging.hpp"
+#include <string.h>
 
 void Player::init(){
     //Allocate memory for the sample buffer
