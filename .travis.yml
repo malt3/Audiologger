@@ -9,7 +9,6 @@ matrix:
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install -y  libtag1-dev libsndfile1-dev libportaudio-dev
-  - sudo apt-get upgrade -y cmake
+  - sudo apt-get install -y  libtag1-dev libsndfile1-dev libportaudio-dev cmake
 
 script: cmake .; make
