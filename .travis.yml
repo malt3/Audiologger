@@ -13,7 +13,7 @@ before_install:
   - rm cmake.tar.bz2
   - export PATH=$(pwd)/cmake/bin:$PATH
   - sudo apt-get update
-  - sudo apt-get install -y  libtag1-dev libsndfile1-dev libportaudio-dev clang-3.5
+  - sudo apt-get install -y  libtag1-dev libsndfile1-dev libportaudio-dev clang-3.5 libstdc++ libstdc++-4.8-dev
 
 script:
   - cmake .
