@@ -1,6 +1,12 @@
 language: cpp
 compoler: clang
 
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+
 before_install:
   - sudo apt-get update
   - sudo apt-get install -y taglib libsndfile portaudio
