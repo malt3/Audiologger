@@ -3,7 +3,7 @@
 Simple and elegant recording and playback program focused on a journal kind of voice recording.
 
 Has a small codebase and simple file structure. However, this program is still in early alpha and should only used experimentally.
-Recorded logs should be backuped regularly. If you want to help out, have a look at the todo list in TODO.md or just read some of the code (I am certain it can be drastically improved).
+Recorded logs should be backuped regularly. If you want to help out, have a look at the todo list in [TODO.md](TODO.md) or just read some of the code (I am certain it can be drastically improved).
 
 ##Features (as of today)
 * Can record 44100Hz Stereo Audio from your standard audio input (aka microphone) and save it as an uncompressed *.wav* file.
@@ -24,3 +24,7 @@ Simply run `Audiologger` in your shell. If you want to record to a folder differ
 * `s` stops a running playback
 * `e` edits metadata of an audiolog (not yet implemented)
 * `q` quits the program
+
+##Dependencies
+
+##Building
