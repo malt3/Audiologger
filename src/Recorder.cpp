@@ -9,6 +9,7 @@
 #include "Recorder.hpp"
 #include "logging.hpp"
 #include <iostream>
+#include <string.h>
 
 
 
