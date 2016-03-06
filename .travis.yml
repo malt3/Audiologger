@@ -2,7 +2,7 @@ language: cpp
 compoler: clang
 
 before_install:
-  - sudo apt-get -qq update
+  - sudo apt-get update
   - sudo apt-get install -y taglib libsndfile portaudio
 
 script: cmake .; make
