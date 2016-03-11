@@ -21,8 +21,8 @@ Audiolog::Audiolog(){
     init();
 }
 
-Audiolog::~Audiolog(){
-    
+Audiolog::Audiolog(std::string title){
+    setTitle(title);
 }
 
 Audiolog::Audiolog(std::string title, std::string filePath){
@@ -30,6 +30,9 @@ Audiolog::Audiolog(std::string title, std::string filePath){
     setFilePath(filePath);
 }
 
+Audiolog::~Audiolog(){
+    
+}
 
 double Audiolog::getDuration(){
     if (duration == 0) {

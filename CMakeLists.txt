@@ -31,13 +31,13 @@ find_package (Taglib REQUIRED)
 include_directories(${TAGLIB_INCLUDES})
 set(LIBS ${LIBS} ${TAGLIB_LIBRARIES})
 
-add_executable(Audiologger src/main.cpp src/Audiolog.cpp src/LinkedList.cpp src/logging.cpp src/LogHandler.cpp src/Player.cpp src/Recorder.cpp)
+add_executable(Audiologger src/main.cpp src/Audiolog.cpp src/LinkedList.cpp src/logging.cpp src/LogHandler.cpp src/Player.cpp src/Recorder.cpp src/parseoptions.cpp)
 target_link_libraries(Audiologger ${LIBS})
 
 
 # add the install targets
 install (TARGETS Audiologger DESTINATION bin)
-install (FILES "${PROJECT_BINARY_DIR}/AudiologgerConfig.hpp"        
+install (FILES "${PROJECT_BINARY_DIR}/AudiologgerConfig.hpp"
          DESTINATION include)
 
 set(EXECUTABLE_OUTPUT_PATH bin)

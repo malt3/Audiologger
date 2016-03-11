@@ -41,6 +41,7 @@ class Audiolog{
     
 public:
     Audiolog();
+    Audiolog(std::string title);
     Audiolog(std::string title, std::string filePath);
     ~Audiolog();
     

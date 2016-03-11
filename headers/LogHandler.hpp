@@ -49,9 +49,12 @@ public:
     void readAudioLogsFromDisk();
     
     int recordLog(Audiolog* log);
+    int recordLog(std::string title);
     //recordLog() without parameters is interactive!!
     int recordLog();
+    void waitForPlaybackEnd();
     int playLog(Audiolog* log);
+    int playLog(int number);
     //playLog without parameters is interactive!!
     int playLog();
     int stopLog();

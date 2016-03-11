@@ -180,6 +180,11 @@ int LogHandler::recordLog(){
     return recordLog(newLog);
 }
 
+int LogHandler::recordLog(std::string title){
+    Audiolog* newLog = new Audiolog(title, folderPath);
+    return recordLog(newLog);
+}
+
 int LogHandler::recordLog(Audiolog* log){
     std::string completeFileName = log->getFilePath()+log->getFileName();
     rec->setDestPath(completeFileName.c_str());
@@ -194,6 +199,12 @@ int LogHandler::recordLog(Audiolog* log){
     log->writeFileInfo();
     logList.push(log);
     return 0;
+}
+
+void LogHandler::waitForPlaybackEnd(){
+    while (player->isPlaying()) {
+        sleep(1);
+    }
 }
 
 int LogHandler::playLog(){
@@ -215,6 +226,15 @@ int LogHandler::playLog(){
         return -1;
     }
     return playLog(logList.getVarAt(indexOfLog));
+}
+
+int LogHandler::playLog(int number){
+    number--;
+    if (number >= logList.getNumObjects() || number < 0) {
+        std::cout << "Not a valid log number." <<std::endl;
+        return -1;
+    }
+    return playLog(logList.getVarAt(number));
 }
 
 int LogHandler::playLog(Audiolog *log){

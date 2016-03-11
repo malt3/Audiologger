@@ -12,6 +12,7 @@
 #include "Audiolog.hpp"
 #include "LinkedList.hpp"
 #include "AudiologgerConfig.hpp"
+#include "parseoptions.hpp"
 #include <string>
 #include <stdio.h>
 #include <time.h>
@@ -20,10 +21,6 @@
 #define standardPath "~/audiologs/"
 
 using namespace std;
-
-void printVersion(){
-    printf("Audiologger Version %d.%d\n", Audiologger_VERSION_MAJOR, Audiologger_VERSION_MINOR);
-}
 
 string shellExtension(string inputPath){
     wordexp_t exp_result;
@@ -35,14 +32,94 @@ string shellExtension(string inputPath){
 }
 
 int main(int argc, char* argv[]){
-    string filePath = standardPath;
-    if (argc>1) {
-        filePath = argv[1];
+    bool help = false;
+    bool version = false;
+    char* title = nullptr;
+    char* filename = nullptr;
+    char* path = nullptr;
+    int position = option_parser(argc, argv, help, version, title, filename, path);
+    if (help) {
+        cout << "usage: \tAudiologger [--version] [--help] [--title] [--filename] [--path] <command>" << "\n";
+        cout << "commands:" << "\n";
+        cout << "\tcreate \t\tCreates a new audiolog.\n\t\t\tTitle can be specified with '--title'." << "\n";
+        cout << "\tplay \t\tPlays an audiolog.\n\t\t\tA number should be given." << "\n";
+        cout << "\tlist \t\tLists all audiologs with their number." << "\n";
+        cout << "\tdelete \t\tDeletes the audiolog with the specified number." << "\n";
+        cout << "\tedit \t\tEdits the audilog with the specified number." << "\n";
+        return 0;
+    }
+    if (version) {
+        cout << "Audiologger version " << Audiologger_VERSION_MAJOR << "." << Audiologger_VERSION_MINOR << "\n";
+        return 0;
     }
     
-    filePath = shellExtension(filePath);
     
-    LogHandler* handler = new LogHandler(filePath);
+    
+    command com = nocommand;
+    int number = 0;
+    command_parser(argc, argv, position, com, number);
+    
+    /* sanitize filepath */
+    string pathStr;
+    if(!path){
+        pathStr = standardPath;
+    }else{
+        pathStr = path;
+    }
+    pathStr = shellExtension(pathStr);
+    
+    string filenameStr;
+    if (filename) {
+       filenameStr = filename;
+
+    }else{
+        filenameStr = "";
+    }
+    string titleStr;
+    if (title) {
+        titleStr = title;
+    }else{
+        titleStr = "";
+    }
+    delete [] path;
+    delete [] filename;
+    delete [] title;
+    
+    LogHandler* handler = new LogHandler(pathStr);
+    
+    switch (com) {
+        case create:
+            if (titleStr.empty()) {
+                cout << "You need to specify a title with the '--title' option.\nSee 'Audiologger --help' for more.\n";
+                break;
+            }
+            cout << "Creating new audilog \""<<titleStr<<"\"\n";
+            handler->recordLog(titleStr);
+            break;
+        case play:
+            if (number < 1){
+                cout << "You need to specify a valid number. Get a list of audiologs with numbers with the 'list' command.\nSee 'Audiologger --help' for more.\n";
+                break;
+            }
+            handler->playLog(number);
+            handler->waitForPlaybackEnd();
+            break;
+        case lst:
+            handler->listAllLogNames();
+            break;
+        case del:
+            handler->deleteLog(number);
+            break;
+        case edit:
+            #warning implement edit
+            break;
+        case nocommand:
+#warning put interactive mode here
+            break;
+    }
+    
+    
+    /*
     char userInput = '\0';
     while (userInput != 'q' && userInput != 'Q') {
         cout << "What do you want to do? (type '?' for help)" << endl;
@@ -88,6 +165,7 @@ int main(int argc, char* argv[]){
                 break;
         }
         
-    }
+    }*/
+    delete handler;
     return 0;
 }

@@ -146,6 +146,9 @@ int Player::startPlaying(){
     }
     playing = true; //set playing bool. This helps external classes to decide if the player is running or not.
     worker = new std::thread(playbackThread, stream, sampleBlock, filePtr, &stopPlaybackThread, &stopPlaybackThread_mutex, &playbackThreadFinishedPlaying, &playbackThreadFinishedPlaying_mutex);
+    if (playing) {
+        stopPlaying();
+    }
     return 0;
 }
 
